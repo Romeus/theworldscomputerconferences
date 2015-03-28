@@ -1,2 +1,3 @@
 *.pyc
 theworldscomputerconferences/settings.py
+db.sqlite3
