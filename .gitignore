@@ -1,5 +1,6 @@
 *.pyc
 theworldscomputerconferences/settings.py
 .ropeproject/
+uploads/
 migrations/
 db.sqlite3
