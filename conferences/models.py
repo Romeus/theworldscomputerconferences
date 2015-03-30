@@ -6,6 +6,9 @@ class Category(models.Model):
                             help_text="Category name")
     description = models.TextField(help_text="Category description")
 
+    def __unicode__(self):
+        return u'%s' % self.name
+
 
 class ConferenceType(models.Model):
     name = models.CharField(max_length=255,
@@ -17,7 +20,8 @@ class ConferenceType(models.Model):
     url = models.URLField(
         help_text="Url of the conference")
     mascot = models.ImageField(upload_to="mascots/",
-                               help_text="Mascot of the conference")
+                               help_text="Mascot of the conference",
+                               blank=True)
     started_since = models.DateTimeField(
         help_text="Date of the conference's first meeting")
     regular = models.BooleanField(help_text="Is conference regular?",
@@ -34,13 +38,25 @@ class ConferenceType(models.Model):
     categories = models.ManyToManyField(Category,
                                         help_text="Conferences's categories")
 
+    def __unicode__(self):
+        return u'%s' % self.name
+
 
 class Place(models.Model):
     name = models.CharField(max_length=255,
                             help_text="Place's name")
     description = models.TextField(help_text="Place description")
     address = models.TextField(help_text="Place address")
-    latitude = models.FloatField(help_text="Place latitude")
+    latitude = models.FloatField(help_text="Place latitude",
+                                 default=0)
+    longitude = models.FloatField(help_text="Place longitude",
+                                  default=0)
+
+    def __unicode__(self):
+        description = self.description[:100] + '...' \
+            if len(self.description) > 100 else self.description
+        return u'%s' % (self.name + ', '+self.address + ', ' +
+                        description)
 
 
 class Conference(models.Model):
@@ -48,6 +64,9 @@ class Conference(models.Model):
     date_to = models.DateTimeField(help_text="End date")
     conference_type = models.ForeignKey(ConferenceType)
     place = models.ForeignKey(Place)
+
+    def __unicode__(self):
+        return u'%s, %s - %s' % (self.place, self.date_from, self.date_to)
 
 
 class Feedback(models.Model):
@@ -58,3 +77,10 @@ class Feedback(models.Model):
                              blank=True)
     email = models.EmailField(help_text="Your email", blank=True)
     message = models.TextField(help_text="Your message")
+
+    def __unicode__(self):
+        email = self.email+', ' if len(self.email) > 0 else ''
+        phone = self.phone+', ' if len(self.phone) > 0 else ''
+        message = self.message[:100] + '...' \
+            if len(self.message) > 100 else self.message
+        return u'%s' % (self.name+', '+email+phone+message)
