@@ -1,4 +1,5 @@
 *.pyc
+*.swp
 theworldscomputerconferences/settings.py
 .ropeproject/
 uploads/
