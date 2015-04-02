@@ -9,6 +9,8 @@ class Category(models.Model):
     def __unicode__(self):
         return u'%s' % self.name
 
+    class Meta:
+        verbose_name_plural = "categories"
 
 class ConferenceType(models.Model):
     name = models.CharField(max_length=255,
