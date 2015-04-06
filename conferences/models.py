@@ -1,4 +1,5 @@
 from django.db import models
+from django.template.defaultfilters import slugify
 
 
 class Category(models.Model):
@@ -11,6 +12,7 @@ class Category(models.Model):
 
     class Meta:
         verbose_name_plural = "categories"
+
 
 class ConferenceType(models.Model):
     name = models.CharField(max_length=255,
@@ -39,9 +41,14 @@ class ConferenceType(models.Model):
         default=False)
     categories = models.ManyToManyField(Category,
                                         help_text="Conferences's categories")
+    slug = models.SlugField(unique=True)
 
     def __unicode__(self):
         return u'%s' % self.name
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(ConferenceType, self).save(*args, **kwargs)
 
 
 class Place(models.Model):
