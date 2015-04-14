@@ -13,6 +13,7 @@
 
     <link rel="icon" href="{% static 'images/favicon.ico' %}">
 
+    <title>{% block title_block %}{% endblock %}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -53,10 +54,9 @@
 
     <div class="container">
 
-      <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-      </div>
+      <div class="conferences-content">
+        {% block body_content %}{% endblock %}
+     </div>
 
     </div><!-- /.container -->
 
