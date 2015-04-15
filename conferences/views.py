@@ -16,7 +16,7 @@ def all(request):
     return render(request, 'conferences/all.html', context_dict)
 
 
-def conference(request, conference_name_slug):
+def conference(request, conference_name_slug=False):
     context_dict = {'request': request}
     return render(request, 'conferences/conference.html', context_dict)
 
