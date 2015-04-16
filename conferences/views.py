@@ -11,13 +11,12 @@ def about(request):
     return render(request, 'conferences/about.html', context_dict)
 
 
-def all(request):
+def conferences_all(request):
     context_dict = {'request': request}
-    return render(request, 'conferences/all.html', context_dict)
+    return render(request, 'conferences/conferences.html', context_dict)
 
-
-def conference(request, conference_name_slug=False):
-    context_dict = {'request': request}
+def conference_particular(request, conference_slug=None):
+    context_dict = {'request': request, 'conference_slug': conference_slug}
     return render(request, 'conferences/conference.html', context_dict)
 
 
