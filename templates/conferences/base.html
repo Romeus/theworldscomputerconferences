@@ -46,11 +46,7 @@
           <ul class="nav navbar-nav">
             <li{% if request|is_current_page:'map' %} class="active" {% endif %}><a href="{% url 'map' %}">Home</a></li>
             <li{% if request|is_current_page:'about' %} class="active" {% endif %}><a href="{% url 'about' %}">About</a></li>
-	    {% with conference_slug=conference_slug|default:'None' %}
-	    {% with particular_conference='conference_particular,conference_slug='|add:conference_slug %}
-	    <li{% if request|is_current_page:'conferences_all' or request|is_current_page:particular_conference %} class="active" {% endif %}><a href="{% url 'conferences_all' %}">Conferences</a></li>
-	    {% endwith %}
-	    {% endwith %}
+	    <li{% if request|is_current_page:'conferences_all' or request|is_current_page:'conference_particular' or request|is_current_page:'conference_history' %} class="active" {% endif %}><a href="{% url 'conferences_all' %}">Conferences</a></li>
             <li{% if request|is_current_page:'feedback' %} class="active" {% endif %}><a href="{% url 'feedback' %}">Feedback</a></li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -63,7 +59,7 @@
         {% block body_content %}{% endblock %}
      </div>
 
-    </div><!-- /.container -->
+    </div>
 
 
     <!-- Bootstrap core JavaScript
