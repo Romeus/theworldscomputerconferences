@@ -3,11 +3,11 @@ from conferences import views
 
 urlpatterns = patterns('',
                        url(r'^$', views.map, name='map'),
-                       url(r'^about$', views.about, name='about'),
-                       url(r'^all$', views.all, name='all'),
-                       url(r'^feedback$', views.feedback, name='feedback'),
-                       url(r'^conference/$',
-                           views.conference, name='conference_default'),
-                       url(r'^conference/(?P<conference_name_slug>[\w\-]+)/$',
-                           views.conference, name='conference'),
+                       url(r'^about/$', views.about, name='about'),
+                       url(r'^feedback/$', views.feedback, name='feedback'),
+                       url(r'^conferences/$',
+                           views.conferences_all, name='conferences_all'),
+                       url(r'^conferences/(?P<conference_slug>[\w\-]+)/$',
+                           views.conference_particular,
+                           name='conference_particular'),
                        )
