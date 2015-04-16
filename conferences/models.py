@@ -30,12 +30,14 @@ class ConferenceType(models.Model):
         help_text="Date of the conference's first meeting")
     regular = models.BooleanField(help_text="Is conference regular?",
                                   default=True)
-    place_address = models.BooleanField(
+    regular_place = models.BooleanField(
         help_text="Does conference has the regular place?",
         default=True)
-    regular_time = models.BooleanField(
-        help_text="Does the conference has regular meeting time?",
-        default=True)
+    regular_place_address = models.ForeignKey(
+        'Place',
+        help_text="Address of regular place conference",
+        blank=True,
+        null=True)
     stopped = models.BooleanField(
         help_text="Does conference don't spend anymore?",
         default=False)
