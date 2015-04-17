@@ -31,36 +31,47 @@
 
   <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
+<nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="container-fluid">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-	  <a class="navbar-brand" href="{% url 'map' %}">World's computer conferences</a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+	    <a class="navbar-brand" href="{% url 'map' %}">World's computer conferences</a>
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li{% if request|is_current_page:'map' %} class="active" {% endif %}><a href="{% url 'map' %}">Home</a></li>
-            <li{% if request|is_current_page:'about' %} class="active" {% endif %}><a href="{% url 'about' %}">About</a></li>
-	    <li{% if request|is_current_page:'conferences_all' or request|is_current_page:'conference_particular' or request|is_current_page:'conference_history' %} class="active" {% endif %}><a href="{% url 'conferences_all' %}">Conferences</a></li>
-            <li{% if request|is_current_page:'feedback' %} class="active" {% endif %}><a href="{% url 'feedback' %}">Feedback</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
-
-    <div class="container">
-
-      <div class="conferences-content">
-        {% block body_content %}{% endblock %}
-     </div>
-
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="nav navbar-nav">
+	            <li{% if request|is_current_page:'map' %} class="active" {% endif %}><a href="{% url 'map' %}">Home</a></li>
+       		    <li{% if request|is_current_page:'about' %} class="active" {% endif %}><a href="{% url 'about' %}">About</a></li>
+	       	    <li{% if request|is_current_page:'conferences_all' or request|is_current_page:'conference_particular' or request|is_current_page:'conference_history' %} class="active" {% endif %}><a href="{% url 'conferences_all' %}">Conferences</a></li>
+                    <li{% if request|is_current_page:'feedback' %} class="active" {% endif %}><a href="{% url 'feedback' %}">Feedback</a></li>
+            </ul>
+        </div>
     </div>
+</nav>
 
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-12">
+	{% block body_content %}{% endblock %}
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <footer>
+                <p>&copy; Copyright 2015 Romeus</p>
+            </footer>
+        </div>
+    </div>
+</div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
