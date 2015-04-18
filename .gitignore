@@ -5,4 +5,5 @@ theworldscomputerconferences/settings.py
 .ropeproject/
 uploads/
 migrations/
+static/
 db.sqlite3
