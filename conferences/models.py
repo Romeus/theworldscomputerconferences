@@ -26,21 +26,6 @@ class ConferenceType(models.Model):
     mascot = models.ImageField(upload_to="mascots/",
                                help_text="Mascot of the conference",
                                blank=True)
-    started_since = models.DateTimeField(
-        help_text="Date of the conference's first meeting")
-    regular = models.BooleanField(help_text="Is conference regular?",
-                                  default=True)
-    regular_place = models.BooleanField(
-        help_text="Does conference has the regular place?",
-        default=True)
-    regular_place_address = models.ForeignKey(
-        'Place',
-        help_text="Address of regular place conference",
-        blank=True,
-        null=True)
-    stopped = models.BooleanField(
-        help_text="Does conference don't spend anymore?",
-        default=False)
     categories = models.ManyToManyField(Category,
                                         help_text="Conferences's categories")
     slug = models.SlugField(unique=True)
