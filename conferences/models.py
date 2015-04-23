@@ -68,9 +68,6 @@ class Conference(models.Model):
 class Feedback(models.Model):
     name = models.CharField(max_length=255,
                             help_text="Your name")
-    phone = models.CharField(max_length=255,
-                             help_text="Your phone number",
-                             blank=True)
     email = models.EmailField(help_text="Your email", blank=True)
     message = models.TextField(help_text="Your message")
 
