@@ -1,4 +1,5 @@
 {% extends 'conferences/base.html' %}
+{% load static from staticfiles %}
 
 {% block title_block %}
 Map	
@@ -10,8 +11,63 @@ Map
 		<div class="col-md-12">Filters</div>
 	</div>
 	<div class="row">
-		<div class="col-md-9">Google Map</div>
-		<div class="col-md-3">Result list</div>
+		<div class="col-md-8">Google Map</div>
+		<div class="col-md-4">
+			<div class="row">
+				<div class="col-md-2"><img src="{% static 'images/blackhat.jpeg' %}"></div>
+				<div class="col-md-3"><a href="#">Black Hat</a></div>
+				<div class="col-md-7">This is description of the FOSDEM computer conference, that is every year event placed in ...</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+				<table class="table table-striped">
+					<tr>
+						<td>Mar, 11, 2003</td>
+						<td>Apr, 12, 2003</td>
+						<td>San Francisco, Paradise avenue, 12</td>
+					</tr>
+					<tr>
+						<td>Mar, 11, 2003</td>
+						<td>Apr, 12, 2003</td>
+						<td>Los Angeles, 123, Santa Monica</td>
+					</tr>
+					<tr>
+						<td>Mar, 11, 2003</td>
+						<td>Apr, 12, 2003</td>
+						<td>Los Angeles, 123, Santa Monica</td>
+					</tr>
+				</table>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-2"><img src="{% static 'images/tux.png' %}"></div>
+				<div class="col-md-3"><a href="#">FOSDEM</a></div>
+				<div class="col-md-7">This is description of the FOSDEM computer conference, that is every year event placed in ...</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+				<table class="table table-striped">
+					<tr>
+						<td>Mar, 11, 2003</td>
+						<td>Apr, 12, 2003</td>
+						<td>San Francisco, Paradise avenue, 12</td>
+					</tr>
+					<tr>
+						<td>Mar, 11, 2003</td>
+						<td>Apr, 12, 2003</td>
+						<td>Los Angeles, 123, Santa Monica</td>
+					</tr>
+					<tr>
+						<td>Mar, 11, 2003</td>
+						<td>Apr, 12, 2003</td>
+						<td>Los Angeles, 123, Santa Monica</td>
+					</tr>
+				</table>
+				</div>
+			</div>
+
+		</div>
 	</div>
 {% endblock %}
 
