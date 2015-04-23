@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from conferences.forms import FeedbackForm
 
 def map(request):
     context_dict = {'request': request}
@@ -22,5 +22,14 @@ def conference_particular(request, conference_slug=None):
 
 
 def feedback(request):
-    context_dict = {'request': request}
+    context_dict = {'request': request }
+    if request.POST:
+        form = FeedbackForm(request.POST)
+        context_dict['form'] = form
+        if form.is_valid():
+            form.save()
+            return render(request, 'conferences/thankyou.html', context_dict)
+    else:
+        form = FeedbackForm()
+        context_dict['form'] = form
     return render(request, 'conferences/feedback.html', context_dict)

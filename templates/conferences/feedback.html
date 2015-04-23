@@ -5,9 +5,51 @@ Feedback
 {% endblock %}
 
 {% block body_content %}
-        <h1>Feedback</h1>
-	<div class="row">
-		<div class="col-md-12">Feedback form</div>
+<h1>Feedback</h1>
+<div class="row">
+	<div class="col-md-12">
+		<form action={% url 'feedback' %} method="POST">
+			{% csrf_token %}
+			<div class="row">
+				<div class="col-md-2">
+					Your name *
+				</div>
+				<div class="col-md-10">
+					{{ form.name.errors }}
+					{{ form.name }}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+					Your email *
+				</div>
+				<div class="col-md-10">
+					{{ form.email.errors }}
+					{{ form.email }}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+					Your message *
+				</div>
+				<div class="col-md-10">
+					{{ form.message.errors }}
+					{{ form.message }}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+					Captcha	
+				</div>
+				<div class="col-md-10">
+					{{ form.captcha.errors }}
+					{{ form.captcha }}
+				</div>
+			</div>
+
+			<input type="submit" value="Submit" />
+		</form>
 	</div>
+</div>
 {% endblock %}
 
