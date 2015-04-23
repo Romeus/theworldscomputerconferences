@@ -73,7 +73,6 @@ class Feedback(models.Model):
 
     def __unicode__(self):
         email = self.email+', ' if len(self.email) > 0 else ''
-        phone = self.phone+', ' if len(self.phone) > 0 else ''
         message = self.message[:100] + '...' \
             if len(self.message) > 100 else self.message
-        return u'%s' % (self.name+', '+email+phone+message)
+        return u'%s' % (self.name+', '+email+message)
