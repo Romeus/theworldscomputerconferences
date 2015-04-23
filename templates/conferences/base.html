@@ -1,82 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<meta name="description" content="">
+		<meta name="author" content="">
 
-    {% load staticfiles %}
-    {% load conferences_filters %}
+		{% load staticfiles %}
+		{% load conferences_filters %}
 
-    <link rel="icon" href="{% static 'images/favicon.ico' %}">
+		<link rel="icon" href="{% static 'images/favicon.ico' %}">
 
-    <title>{% block title_block %}{% endblock %}</title>
+		<title>{% block title_block %}{% endblock %}</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'bootstrap/css/bootstrap-theme.min.css' %}" rel="stylesheet">
+		<!-- Bootstrap core CSS -->
+		<link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+		<link href="{% static 'bootstrap/css/bootstrap-theme.min.css' %}" rel="stylesheet">
+		<link href="{% static 'jquery-ui/jquery-ui.min.css' %}" rel="stylesheet">
 
-    <!-- conference template -->
-    <link href="{% static 'css/conference.css' %}" rel="stylesheet">
+		<!-- conference template -->
+		<link href="{% static 'css/conference.css' %}" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
 
-  <body>
+	<body>
 
-<nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-	    <a class="navbar-brand" href="{% url 'map' %}">World's computer conferences</a>
-        </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="nav navbar-nav">
-	            <li{% if request|is_current_page:'map' %} class="active" {% endif %}><a href="{% url 'map' %}">Home</a></li>
-       		    <li{% if request|is_current_page:'about' %} class="active" {% endif %}><a href="{% url 'about' %}">About</a></li>
-	       	    <li{% if request|is_current_page:'conferences_all' or request|is_current_page:'conference_particular' or request|is_current_page:'conference_history' %} class="active" {% endif %}><a href="{% url 'conferences_all' %}">Conferences</a></li>
-                    <li{% if request|is_current_page:'feedback' %} class="active" {% endif %}><a href="{% url 'feedback' %}">Feedback</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+		<nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="{% url 'map' %}">World's computer conferences</a>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="navbarCollapse">
+					<ul class="nav navbar-nav">
+						<li{% if request|is_current_page:'map' %} class="active" {% endif %}><a href="{% url 'map' %}">Home</a></li>
+						<li{% if request|is_current_page:'about' %} class="active" {% endif %}><a href="{% url 'about' %}">About</a></li>
+						<li{% if request|is_current_page:'conferences_all' or request|is_current_page:'conference_particular' or request|is_current_page:'conference_history' %} class="active" {% endif %}><a href="{% url 'conferences_all' %}">Conferences</a></li>
+						<li{% if request|is_current_page:'feedback' %} class="active" {% endif %}><a href="{% url 'feedback' %}">Feedback</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
 
 
-<div class="container-fluid">
+		<div class="container-fluid">
 
-    <div class="row">
-        <div class="col-md-12">
-	{% block body_content %}{% endblock %}
-        </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col-md-12">
-            <footer>
-                <p>&copy; Copyright 2015 Romeus</p>
-            </footer>
-        </div>
-    </div>
-</div>
+			<div class="row">
+				<div class="col-md-12">
+					{% block body_content %}{% endblock %}
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-md-12">
+					<footer>
+						<p>&copy; Copyright 2015 Romeus</p>
+					</footer>
+				</div>
+			</div>
+		</div>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="{% static 'jquery.min.js' %}"></script>
-    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
-  </body>
+		<!-- Bootstrap core JavaScript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="{% static 'jquery.min.js' %}"></script>
+		<script src="{% static 'jquery-ui/jquery-ui.min.js' %}"></script>
+		<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+		{% block page_scripts %}{% endblock %}
+	</body>
 </html>
