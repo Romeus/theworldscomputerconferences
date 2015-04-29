@@ -3,6 +3,7 @@ This project's objective is to present information about world's computer confer
 Technology stack:
 * Python >= 2.7.5
 * Django >= 1.8
+  * Django REST framework
   * Django captcha
 * Google maps
 * JQuery 
