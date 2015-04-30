@@ -1,5 +1,10 @@
 from django.shortcuts import render
 from conferences.forms import FeedbackForm
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from conferences.models import ConferenceType, Conference
+from conferences.serializers import ConferenceTypeSerializer
+
 
 def map(request):
     context_dict = {'request': request}
@@ -22,7 +27,7 @@ def conference_particular(request, conference_slug=None):
 
 
 def feedback(request):
-    context_dict = {'request': request }
+    context_dict = {'request': request}
     if request.POST:
         form = FeedbackForm(request.POST)
         context_dict['form'] = form
@@ -33,3 +38,11 @@ def feedback(request):
         form = FeedbackForm()
         context_dict['form'] = form
     return render(request, 'conferences/feedback.html', context_dict)
+
+
+@api_view(['GET'])
+def rest_conferences_collection(request):
+    if request.method == 'GET':
+        conferences = ConferenceType.objects.all()
+        serializer = ConferenceTypeSerializer(conferences, many=True)
+        return Response(serializer.data)

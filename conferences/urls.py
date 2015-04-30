@@ -11,4 +11,8 @@ urlpatterns = \
                  name='conferences_all'),
              url(r'^conferences/(?P<conference_slug>[\w\-]+)/$',
                  views.conference_particular,
-                 name='conference_particular'), )
+                 name='conference_particular'),
+             url(r'^api/v1/conferences$',
+                 views.rest_conferences_collection,
+                 name='rest_conferences_collection'),
+             )
